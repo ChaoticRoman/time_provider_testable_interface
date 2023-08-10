@@ -1,7 +1,9 @@
 .PHONY: build run clean
 
-build:
+configure:
 	cmake -S . -B build -G Ninja
+
+build: configure
 	cmake --build build
 
 test: build
