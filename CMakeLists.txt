@@ -5,10 +5,13 @@ project(alarm)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
+cmake_policy(SET CMP0135 NEW)
+
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
 add_executable(alarm
     src/main.cpp
+    src/zero_time_provider.cpp
 )
 
 add_subdirectory(tests)
