@@ -6,8 +6,8 @@
 
 class ZeroTimeProvider : public ITimeProvider {
     public:
-        uint8_t hour();
-        uint8_t minute();
-        uint8_t second();
+        uint8_t hour() override ;
+        uint8_t minute() override;
+        uint8_t second() override;
         ~ZeroTimeProvider() = default;
 };
