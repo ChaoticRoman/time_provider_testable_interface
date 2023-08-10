@@ -2,4 +2,4 @@
 
 #include <string>
 
-constexpr std::string version = "v0.0.0";
+const std::string version = "v0.0.0";
