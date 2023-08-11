@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.22)
 project(tests)
 
+cmake_policy(SET CMP0135 NEW)
+
 include(FetchContent)
 FetchContent_Declare(
   googletest
@@ -10,6 +12,8 @@ FetchContent_MakeAvailable(googletest)
 
 add_executable(tests
   test_alarm.cpp
+  test_zero_time_provider.cpp
+  ../src/zero_time_provider.cpp
 )
 
 target_link_libraries(tests gtest_main)

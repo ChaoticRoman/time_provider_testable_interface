@@ -9,6 +9,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 
 add_executable(alarm
     src/main.cpp
+    src/zero_time_provider.cpp
 )
 
 add_subdirectory(tests)
