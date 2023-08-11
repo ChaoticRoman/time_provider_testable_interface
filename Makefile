@@ -7,7 +7,7 @@ build: configure
 	cmake --build build
 
 test: build
-	./build/tests/tests
+	ctest --verbose --test-dir build/tests
 
 run: build
 	./build/alarm
