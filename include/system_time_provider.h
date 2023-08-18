@@ -4,7 +4,7 @@
 
 #include <cinttypes>
 
-class ZeroTimeProvider : public ITimeProvider {
+class SystemTimeProvider : public ITimeProvider {
     public:
         uint8_t hour() override ;
         uint8_t minute() override;
