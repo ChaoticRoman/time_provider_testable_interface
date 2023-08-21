@@ -7,7 +7,6 @@
 
 TEST(SUITE, Hour) {
   PROVIDER t;
-
   EXPECT_EQ(t.hour(), 0);
 }
 

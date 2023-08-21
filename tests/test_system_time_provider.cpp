@@ -8,7 +8,7 @@
 #define PROVIDER SystemTimeProvider
 
 static std::tm now() {
-    std::time_t now_epoch = std::time(nullptr);   // get time now
+    std::time_t now_epoch = std::time(nullptr);
     return *std::localtime(&now_epoch);
 }
 
