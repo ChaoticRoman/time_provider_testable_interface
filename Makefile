@@ -10,7 +10,7 @@ test: build
 	ctest --verbose --test-dir build/tests
 
 run: build
-	./build/alarm
+	./build/alarm 8 0
 
 clean:
 	rm -rf build
