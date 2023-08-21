@@ -11,7 +11,8 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 
 add_executable(tests
-  test_alarm.cpp
+  test_fake_alarm.cpp
+  ../src/fake_alarm.cpp
   test_zero_time_provider.cpp
   ../src/zero_time_provider.cpp
   test_system_time_provider.cpp
