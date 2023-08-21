@@ -2,6 +2,8 @@
 #include "i_time_provider.h"
 #include "system_time_provider.h"
 #include "time_utils.h"
+#include "i_alarm.h"
+#include "fake_alarm.h"
 
 #include <iostream>
 #include <memory>
@@ -26,18 +28,20 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    std::tm alarm;
-    alarm.tm_hour = hour;
-    alarm.tm_min = minute;
-    alarm.tm_sec = 0;
+    std::tm alarm_time;
+    alarm_time.tm_hour = hour;
+    alarm_time.tm_min = minute;
+    alarm_time.tm_sec = 0;
 
     std::cout << "Alarm set for ";
-    print_time(alarm);
+    print_time(alarm_time);
     std::cout << std::endl;
 
     std::unique_ptr<ITimeProvider> t = std::make_unique<SystemTimeProvider>();
+    std::unique_ptr<IAlarm> alarm = std::make_unique<FakeAlarm>();
 
-    while(true)
+    bool done = false;
+    while(not done)
     {
         std::tm now;
         now.tm_hour = t->hour();
@@ -47,6 +51,8 @@ int main(int argc, char* argv[]) {
         std::cout << "Time is ";
         print_time(now);
         std::cout << std::endl;
+
+        done = alarm->tick();
 
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }

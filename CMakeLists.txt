@@ -11,6 +11,7 @@ add_executable(alarm
     src/main.cpp
     src/system_time_provider.cpp
     src/time_utils.cpp
+    src/fake_alarm.cpp
 )
 
 add_subdirectory(tests)
