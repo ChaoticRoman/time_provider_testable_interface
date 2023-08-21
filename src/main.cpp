@@ -33,8 +33,16 @@ int main(int argc, char* argv[]) {
     print_time(alarm);
     std::cout << std::endl;
 
-    /*std::unique_ptr<ITimeProvider> t = std::make_unique<SystemTimeProvider>();
-    std::cout << "Time is ";*/
+    std::unique_ptr<ITimeProvider> t = std::make_unique<SystemTimeProvider>();
+
+    std::tm now;
+    now.tm_hour = t->hour();
+    now.tm_min = t->minute();
+    now.tm_sec = t->second();
+
+    std::cout << "Time is ";
+    print_time(now);
+    std::cout << std::endl;
 
     return 0;
 }
