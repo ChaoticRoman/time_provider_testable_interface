@@ -7,6 +7,8 @@
 #include <memory>
 #include <cstdlib>
 #include <ctime>
+#include <chrono>
+#include <thread>
 
 int main(int argc, char* argv[]) {
     std::cout << "Alarm app, " << version << std::endl;
@@ -35,14 +37,19 @@ int main(int argc, char* argv[]) {
 
     std::unique_ptr<ITimeProvider> t = std::make_unique<SystemTimeProvider>();
 
-    std::tm now;
-    now.tm_hour = t->hour();
-    now.tm_min = t->minute();
-    now.tm_sec = t->second();
+    while(true)
+    {
+        std::tm now;
+        now.tm_hour = t->hour();
+        now.tm_min = t->minute();
+        now.tm_sec = t->second();
 
-    std::cout << "Time is ";
-    print_time(now);
-    std::cout << std::endl;
+        std::cout << "Time is ";
+        print_time(now);
+        std::cout << std::endl;
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
 
     return 0;
 }
